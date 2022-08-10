@@ -1,11 +1,11 @@
 @font-face { 
   font-family: IBM Plex Mono;
-  src: url("/assets/f/IBMPlexMono-Regular.ttf") 
+  src: url("./assets/f/IBMPlexMono-Regular.ttf") 
   format("truetype");
 }
 @font-face { 
   font-family: IBM Plex Sans;
-  src: url("/assets/f/IBMPlexSans-Regular.ttf")
+  src: url("./assets/f/IBMPlexSans-Regular.ttf")
   format("truetype");
 }
 
