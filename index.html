@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <script src="/ace/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+  </head>
+  <body>
+    <div class="wrap">
+      <h1>Welcome to the website of KBTween and JSTween!</h1>
+      <p><a href="https://github.com/MeowcaTheoRange/KBTween">Download</a> them from GitHub!</p>
+      <p><a href="https://github.com/MeowcaTheoRange/KBTween/blob/main/README.md">View</a> the documentation?</p>
+    </div>
+    <h1>KBTween v2</h1>
+    <p>KBTween is a tween library for Kaboom that allows easy creation of animation.</p>
+    <h1>KBTween Examples</h1>
+    <p>These are a set of examples showing what you can do with KBTween.</p>
+    <p>Code is usually interchangeable between the two, so any examples you like in KBTween, can easily be implemented in JSTween.</p>
+    <br /><small>You can play with the examples by simply editing the code. It automatically changes!</small><br />
+    <h2><span class="tag-special">Introduction</span> - Flashing and Bouncing Bean</h2>
+    <div class="gridpart">
+      <div id="editor" class="imAnEditor">var k = kaboom();
+var twnlib = KBTween(k);
+
+loadBean();
+
+var bean = add([
+  sprite("bean"),
+  pos(64, 64),
+  color(255, 255, 255)
+]);
+
+twnlib.tween(bean.pos, [ "x" ], {
+  from: 0,
+  to: width() - 64,
+  time: 3.2,
+  type: twnlib.tweentypes.PINGPONG
+});
+
+twnlib.tween(bean.pos, [ "y" ], {
+  from: 0,
+  to: height() - 64,
+  time: 2,
+  type: twnlib.tweentypes.PINGPONG
+});
+
+twnlib.tween(bean.color, [ "g", "r" ], {
+  from: 255,
+  to: 0,
+  time: 0.5,
+  type: twnlib.tweentypes.PINGPONG
+});</div>
+      <iframe src="about:blank" id="editor_iframe"></iframe>
+    </div>
+    <h2>Jumping Bean</h2>
+    <div class="gridpart">
+      <div id="jumpy" class="imAnEditor">var k = kaboom();
+var twnlib = KBTween(k);
+
+loadBean();
+
+var bean = add([
+  sprite("bean"),
+  pos(64, 64),
+  color(255, 255, 255)
+]);
+
+twnlib.tween(bean.pos, [ "x" ], {
+  from: 0,
+  to: width() - 64,
+  time: 4,
+  type: twnlib.tweentypes.PINGPONG
+});
+
+twnlib.tween(bean.pos, [ "y" ], {
+  from: height() / 2,
+  to: height() - 64,
+  time: 1,
+  type: twnlib.tweentypes.PINGPONG
+}, {
+  ease: easings.easeInQuad,
+  onFinish: (_, con, loop) => {
+    if (loop % 2 == 0) {
+        con.ease = easings.easeInQuad
+    } else {
+        con.ease = easings.easeOutQuad
+    }
+  }
+});</div>
+      <iframe src="about:blank" id="jumpy_iframe"></iframe>
+    </div>
+    <h2><span class="tag-special">Unorthodox Usages</span> - Nice Score!</h2>
+    <div class="gridpart">
+      <div id="score" class="imAnEditor">var k = kaboom();
+var twnlib = KBTween(k);
+
+var score = add([
+  text("Score: 0", {size: 48}),
+  pos(24),
+  {value: 0}
+]);
+
+twnlib.tween(score, [ "value" ], {
+  from: 0,
+  to: 100,
+  time: 1,
+  type: twnlib.tweentypes.CONTINUE
+}, {
+  onUpdate: () => {
+      score.text = "Score: " + Math.round(score.value)
+  }
+});</div>
+      <iframe src="about:blank" id="score_iframe"></iframe>
+    </div>
+    <h1>JSTween</h1>
+    <p>JSTween is a tween library for web JavaScript that allows easy creation of animation.</p>
+    <p>It works on Firefox, Chrome, and modern Edge.</p>
+    <h1>JSTween Examples</h1>
+    <p>These are a set of examples showing what you can do with JSTween.</p>
+    <p>Code is usually interchangeable between the two, so any examples you like in JSTween, can easily be implemented in KBTween.</p>
+    <h2><span class="tag-special">Introduction</span> - Like &lt;marquee&gt; But Not Old</h2>
+    <div class="gridpart">
+      <div id="marqueenew" class="imAnEditor">&lt;div id="container" style="border:1px solid black;overflow:hidden;"&gt;
+    &lt;p id="move" style="position: relative;left:0;top:0;display: inline-block;margin:0;"&gt;Hello!&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;script type="module"&gt;
+    import { JSTween } from "https://cdn.jsdelivr.net/gh/MeowcaTheoRange/KBTween/JSTween.js";
+    import { easings } from "https://cdn.jsdelivr.net/gh/MeowcaTheoRange/KBTween/easingpackage.js";
+    
+    var twnlib = JSTween();
+    var position = {x: 0};
+    var move = document.getElementById("move");
+    var container = document.getElementById("container");
+    
+    twnlib.tween(position, [ "x" ], {
+        from: -move.offsetWidth,
+        to: container.offsetWidth,
+        time: 5,
+        type: twnlib.tweentypes.FOREVER
+    }, {
+        onUpdate: () =&gt; {
+            move.style.left = position.x + "px";
+        }
+    });
+&lt;/script&gt;</div>
+      <iframe src="about:blank" id="marqueenew_iframe"></iframe>
+    </div>
+    <h2>Like &lt;marquee&gt; But Not Old and Alternating</h2>
+    <div class="gridpart">
+      <div id="marqueenewalt" class="imAnEditor">&lt;div id="container" style="border:1px solid black;overflow:hidden;height: 200px;width: 200px;"&gt; 
+    &lt;p id="move" style="position: relative;left:0;top:0;display: inline-block;margin:0;"&gt;Hello!&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;script type="module"&gt;
+    import { JSTween } from "https://cdn.jsdelivr.net/gh/MeowcaTheoRange/KBTween/JSTween.js";
+    import { easings } from "https://cdn.jsdelivr.net/gh/MeowcaTheoRange/KBTween/easingpackage.js";
+    
+    var twnlib = JSTween();
+    var position = {x: 0, y: 0};
+    var move = document.getElementById("move");
+    var container = document.getElementById("container");
+    
+    twnlib.tween(position, [ "x" ], {
+        from: 0,
+        to: container.offsetWidth - move.offsetWidth,
+        time: 3.2,
+        type: twnlib.tweentypes.PINGPONG
+    }, {
+        onUpdate: () =&gt; {
+            move.style.left = position.x + "px";
+        }
+    });
+    twnlib.tween(position, [ "y" ], {
+        from: 0,
+        to: container.offsetHeight - move.offsetHeight,
+        time: 2,
+        type: twnlib.tweentypes.PINGPONG
+    }, {
+        onUpdate: () =&gt; {
+            move.style.top = position.y + "px";
+        }
+    });
+&lt;/script&gt;</div>
+      <iframe src="about:blank" id="marqueenewalt_iframe"></iframe>
+    </div>
+    <h2><span class="tag-special">Unorthodox Usages</span> - Nice Score!</h2>
+    <div class="gridpart">
+      <div id="scorejs" class="imAnEditor">&lt;p&gt;Points: &lt;span id="score"&gt;0&lt;/span&gt;&lt;/p&gt;
+
+&lt;script type="module"&gt;
+    import { JSTween } from "https://cdn.jsdelivr.net/gh/MeowcaTheoRange/KBTween/JSTween.js";
+    import { easings } from "https://cdn.jsdelivr.net/gh/MeowcaTheoRange/KBTween/easingpackage.js";
+    
+    var twnlib = JSTween();
+    var score = document.getElementById("score");
+    
+    twnlib.tween(score, [ "innerHTML" ], {
+        from: 0,
+        to: 100,
+        time: 10,
+        type: twnlib.tweentypes.NORMAL
+    });
+&lt;/script&gt;</div>
+      <iframe src="about:blank" id="scorejs_iframe"></iframe>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
