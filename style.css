@@ -2,7 +2,7 @@
   font-family: IBM Plex Mono;
   src: url("./assets/f/IBMPlexMono-Regular.ttf") 
   format("truetype");
-}
+} /* DO THE DOT SLASH THING, GITHUB! */
 @font-face { 
   font-family: IBM Plex Sans;
   src: url("./assets/f/IBMPlexSans-Regular.ttf")
