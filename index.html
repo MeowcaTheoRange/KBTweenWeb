@@ -133,23 +133,20 @@ twnlib.tween(score, [ "value" ], {
 &lt;/div&gt;
 
 &lt;script type="module"&gt;
-    import { JSTween } from "https://cdn.jsdelivr.net/gh/MeowcaTheoRange/KBTween/JSTween.js";
-    import { easings } from "https://cdn.jsdelivr.net/gh/MeowcaTheoRange/KBTween/easingpackage.js";
+    import { JSTween } from "https://cdn.jsdelivr.net/gh/MeowcaTheoRange/KBTween@master/JSTween.js";
+    import { easings } from "https://cdn.jsdelivr.net/gh/MeowcaTheoRange/KBTween@master/easingpackage.js";
     
     var twnlib = JSTween();
-    var position = {x: 0};
     var move = document.getElementById("move");
     var container = document.getElementById("container");
     
-    twnlib.tween(position, [ "x" ], {
+    twnlib.tween(move.style, [ "left" ], {
         from: -move.offsetWidth,
         to: container.offsetWidth,
         time: 5,
         type: twnlib.tweentypes.FOREVER
     }, {
-        onUpdate: () =&gt; {
-            move.style.left = position.x + "px";
-        }
+        suffix: "px"
     });
 &lt;/script&gt;</div>
       <iframe src="about:blank" id="marqueenew_iframe"></iframe>
@@ -161,33 +158,28 @@ twnlib.tween(score, [ "value" ], {
 &lt;/div&gt;
 
 &lt;script type="module"&gt;
-    import { JSTween } from "https://cdn.jsdelivr.net/gh/MeowcaTheoRange/KBTween/JSTween.js";
-    import { easings } from "https://cdn.jsdelivr.net/gh/MeowcaTheoRange/KBTween/easingpackage.js";
+    import { JSTween } from "https://cdn.jsdelivr.net/gh/MeowcaTheoRange/KBTween@master/JSTween.js";
+    import { easings } from "https://cdn.jsdelivr.net/gh/MeowcaTheoRange/KBTween@master/easingpackage.js";
     
     var twnlib = JSTween();
-    var position = {x: 0, y: 0};
     var move = document.getElementById("move");
     var container = document.getElementById("container");
     
-    twnlib.tween(position, [ "x" ], {
+    twnlib.tween(move.style, [ "left" ], {
         from: 0,
         to: container.offsetWidth - move.offsetWidth,
         time: 3.2,
         type: twnlib.tweentypes.PINGPONG
     }, {
-        onUpdate: () =&gt; {
-            move.style.left = position.x + "px";
-        }
+        suffix: "px"
     });
-    twnlib.tween(position, [ "y" ], {
+    twnlib.tween(move.style, [ "top" ], {
         from: 0,
         to: container.offsetHeight - move.offsetHeight,
         time: 2,
         type: twnlib.tweentypes.PINGPONG
     }, {
-        onUpdate: () =&gt; {
-            move.style.top = position.y + "px";
-        }
+        suffix: "px"
     });
 &lt;/script&gt;</div>
       <iframe src="about:blank" id="marqueenewalt_iframe"></iframe>
@@ -197,8 +189,8 @@ twnlib.tween(score, [ "value" ], {
       <div id="scorejs" class="imAnEditor">&lt;p&gt;Points: &lt;span id="score"&gt;0&lt;/span&gt;&lt;/p&gt;
 
 &lt;script type="module"&gt;
-    import { JSTween } from "https://cdn.jsdelivr.net/gh/MeowcaTheoRange/KBTween/JSTween.js";
-    import { easings } from "https://cdn.jsdelivr.net/gh/MeowcaTheoRange/KBTween/easingpackage.js";
+    import { JSTween } from "https://cdn.jsdelivr.net/gh/MeowcaTheoRange/KBTween@master/JSTween.js";
+    import { easings } from "https://cdn.jsdelivr.net/gh/MeowcaTheoRange/KBTween@master/easingpackage.js";
     
     var twnlib = JSTween();
     var score = document.getElementById("score");
